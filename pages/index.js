@@ -29,8 +29,8 @@ export default function Home() {
             >
               By{' '}
               <img
-                // src="/vercel.svg"
-                src={`${prefix}/vercel.svg`}
+                src="/vercel.svg"
+                // src={`${prefix}/vercel.svg`}
                 alt="Vercel Logo"
                 className={styles.vercelLogo}
                 width={100}
@@ -42,23 +42,23 @@ export default function Home() {
         </div>
 
         <div className={styles.center}>
-          <Image
+          <img
             className={styles.logo}
-            src={`${prefix}/next.svg`}
-            // src="/next.svg"
+            // src={`${prefix}/next.svg`}
+            src="/next.svg"
             alt="Next.js Logo"
             width={180}
             height={37}
-            priority
+            // priority
           />
           <div className={styles.thirteen}>
-            <Image
-              // src="/thirteen.svg"
-              src={`${prefix}/thirteen.svg`}
+            <img
+              src="/thirteen.svg"
+              // src={`${prefix}/thirteen.svg`}
               alt="13"
               width={40}
               height={31}
-              priority
+              // priority
             />
           </div>
         </div>
