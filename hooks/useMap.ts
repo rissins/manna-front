@@ -33,6 +33,7 @@ function useMap() {
             });
         }
     }, [myLocation]);
+    console.log(myLocation)
 
     return {
         myLocation,
