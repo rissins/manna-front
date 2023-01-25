@@ -2,9 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import {prefix} from "@/config/config";
-import { Map, MapMarker } from "react-kakao-maps-sdk"
-import React, { useState, useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +18,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
+            <code className={styles.code}>pages/index.tsx</code>
           </p>
           <div>
             <a
@@ -30,37 +27,34 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               By{' '}
-              <img
-                // src="/vercel.svg"
-                src={`${prefix}/vercel.svg`}
+              <Image
+                src="/vercel.svg"
                 alt="Vercel Logo"
                 className={styles.vercelLogo}
                 width={100}
                 height={24}
-                // priority
+                priority
               />
             </a>
           </div>
         </div>
 
         <div className={styles.center}>
-          <img
+          <Image
             className={styles.logo}
-            src={`${prefix}/next.svg`}
-            // src="/next.svg"
+            src="/next.svg"
             alt="Next.js Logo"
             width={180}
             height={37}
-            // priority
+            priority
           />
           <div className={styles.thirteen}>
-            <img
-              // src="/thirteen.svg"
-              src={`${prefix}/thirteen.svg`}
+            <Image
+              src="/thirteen.svg"
               alt="13"
               width={40}
               height={31}
-              // priority
+              priority
             />
           </div>
         </div>
@@ -125,13 +119,5 @@ export default function Home() {
         </div>
       </main>
     </>
-      // <Map
-      //     center={{ lat: 33.5563, lng: 126.79581 }}
-      //     style={{ width: "100%", height: "360px" }}
-      // >
-      //     <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
-      //         <div style={{ color: "#000" }}>Hello World!</div>
-      //     </MapMarker>
-      // </Map>
   )
 }
