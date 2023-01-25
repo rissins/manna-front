@@ -1,19 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
 import type {NextPage} from 'next';
 import styled from 'styled-components'
-import useMap from '../hooks/useMap';
 import Loader from "react-loader-spinner";
 import { useRouter } from 'next/router'
 
 
 const IndexPage: NextPage = () => {
-    // useMap();
     const router = useRouter()
 
-    console.log(router.query.latitude);
-    let latitude = parseFloat(router.query.latitude as string);
-    let longitude = parseFloat(router.query.latitude as string);
-    console.log(Number(latitude));
+    var latitude = +router.query.latitude;
+    var longitude = +router.query.longitude;
 
     const mapRef = useRef<HTMLElement | null | any>(null);
     const [myLocation, setMyLocation] = useState<
@@ -53,16 +49,24 @@ const IndexPage: NextPage = () => {
 
 
             var map = new naver.maps.Map('map', {
-                center: new naver.maps.LatLng(currentPosition[0], currentPosition[1]),
+                // center: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
+                center: new naver.maps.LatLng(latitude, longitude),
                 zoom: 20
             });
+            console.log(latitude);
+            console.log(longitude)
 
             var marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(currentPosition[0], currentPosition[1]),
+                // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
+                position: new naver.maps.LatLng(latitude, longitude),
                 map: map
             });
         }
     }, [myLocation]);
+
+    // console.log("=============")
+    // console.log(myLocation)
+    // console.log("=============")
 
 
     return (
