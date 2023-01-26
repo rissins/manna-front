@@ -8,7 +8,9 @@ import { useRouter } from 'next/router'
 const IndexPage: NextPage = () => {
     const router = useRouter()
 
+    // @ts-ignore
     var lat = +router.query.latitude;
+    // @ts-ignore
     var lon = +router.query.longitude;
 
     const mapRef = useRef<HTMLElement | null | any>(null);
