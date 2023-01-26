@@ -9,9 +9,14 @@ const IndexPage: NextPage = () => {
     const router = useRouter()
 
     // @ts-ignore
-    var lat = +router.query.latitude;
+    const lat1 = +router.query.lat1;
     // @ts-ignore
-    var lon = +router.query.longitude;
+    const lon1 = +router.query.lon1;
+
+    // @ts-ignore
+    const lat2 = +router.query.lat2;
+    // @ts-ignore
+    const lon2 = +router.query.lon2;
 
     const mapRef = useRef<HTMLElement | null | any>(null);
     const [myLocation, setMyLocation] = useState<
@@ -49,18 +54,42 @@ const IndexPage: NextPage = () => {
             //     map: mapRef.current
             // });
 
+            let markers = [];
+            var areaArr = [];
+            areaArr.push(
+                {lat: lat1, lon: lon1},
+                {lat: lat2, lon: lon2},
+            )
+
+
+
 
             var map = new naver.maps.Map('map', {
                 // center: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                center: new naver.maps.LatLng(lat, lon),
+                center: new naver.maps.LatLng(lat1, lon1),
                 zoom: 18
             });
 
-            var marker = new naver.maps.Marker({
-                // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                position: new naver.maps.LatLng(lat, lon),
-                map: map
-            });
+
+            for (let i = 0; i < areaArr.length; i++) {
+                var marker = new naver.maps.Marker({
+                    // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
+                    position: new naver.maps.LatLng(areaArr[i].lat, areaArr[i].lon),
+                    map: map
+                });
+            }
+
+            // var marker = new naver.maps.Marker({
+            //     // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
+            //     position: new naver.maps.LatLng(lat1, lon1),
+            //     map: map
+            // });
+            //
+            // var marker1 = new naver.maps.Marker({
+            //     // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
+            //     position: new naver.maps.LatLng(lat1, lon1),
+            //     map: map
+            // });
         }
     }, [myLocation]);
 
