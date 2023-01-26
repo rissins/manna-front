@@ -8,8 +8,8 @@ import { useRouter } from 'next/router'
 const IndexPage: NextPage = () => {
     const router = useRouter()
 
-    var latitude = +router.query.latitude;
-    var longitude = +router.query.longitude;
+    var lat = +router.query.latitude;
+    var lon = +router.query.longitude;
 
     const mapRef = useRef<HTMLElement | null | any>(null);
     const [myLocation, setMyLocation] = useState<
@@ -50,24 +50,17 @@ const IndexPage: NextPage = () => {
 
             var map = new naver.maps.Map('map', {
                 // center: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                center: new naver.maps.LatLng(latitude, longitude),
-                zoom: 20
+                center: new naver.maps.LatLng(lat, lon),
+                zoom: 18
             });
-            console.log(latitude);
-            console.log(longitude)
 
             var marker = new naver.maps.Marker({
                 // position: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                position: new naver.maps.LatLng(latitude, longitude),
+                position: new naver.maps.LatLng(lat, lon),
                 map: map
             });
         }
     }, [myLocation]);
-
-    // console.log("=============")
-    // console.log(myLocation)
-    // console.log("=============")
-
 
     return (
             <MapBox id="map">
