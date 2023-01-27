@@ -34,18 +34,27 @@ const callAPI = async (lat: any, lon: any) => {
 const list: NextPage = () => {
 
     // Handles the submit event on form submit.
+    // @ts-ignore
     const handleSubmit = async (event) => {
         // Stop the form from submitting and refreshing the page.
         event.preventDefault()
 
         // Get data from the form.
-        const data = {
-            lat: event.target.lat.value,
-            lon: event.target.lon.value,
-        }
+        const dataArr = []
+        // const data = {
+        //     lat: event.target.lat.value,
+        //     lon: event.target.lon.value,
+        // }
+
+        dataArr.push(
+            {lat: event.target.lat.value, lon: event.target.lon.value},
+            {lat: event.target.lat2.value, lon: event.target.lon2.value},
+        )
+
+
 
         // Send the data to the server in JSON format.
-        const JSONdata = JSON.stringify(data)
+        const JSONdata = JSON.stringify(dataArr)
 
         // API endpoint where we send form data.
         const endpoint = 'http://localhost:8080/api/v1/test'
@@ -69,6 +78,7 @@ const list: NextPage = () => {
         // If server returns the name submitted, that means the form works.
         const result = await response.json()
         // alert(`Is this your full name: ${result.data}`)
+        console.log(result)
     }
 
     return (
@@ -77,6 +87,10 @@ const list: NextPage = () => {
             <input type="text" id="lat" name="lat"/>
             <label htmlFor="lon">lon:</label>
             <input type="text" id="lon" name="lon"/>
+            <label htmlFor="lat2">lat:</label>
+            <input type="text" id="lat2" name="lat2"/>
+            <label htmlFor="lon2">lon:</label>
+            <input type="text" id="lon2" name="lon2"/>
             {/*<input type="button" onClick={callAPI} value="전송"/>*/}
             <button type="submit">Submit</button>
         </form>
