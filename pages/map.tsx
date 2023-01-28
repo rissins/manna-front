@@ -18,6 +18,11 @@ const IndexPage: NextPage = () => {
     // @ts-ignore
     const lon2 = +router.query.lon2;
 
+    // @ts-ignore
+    const mdLat = +router.query.mdLat;
+    // @ts-ignore
+    const mdLon = +router.query.mdLon;
+
     const mapRef = useRef<HTMLElement | null | any>(null);
     const [myLocation, setMyLocation] = useState<
         { latitude: number; longitude: number } | string
@@ -59,6 +64,7 @@ const IndexPage: NextPage = () => {
             areaArr.push(
                 {lat: lat1, lon: lon1},
                 {lat: lat2, lon: lon2},
+                {lat: mdLat, lon: mdLon},
             )
 
 
@@ -102,7 +108,6 @@ const IndexPage: NextPage = () => {
 
 // Styles
 const MapBox = styled.div`
-  //width: 100vh;
   height: 100vh;
 `;
 

@@ -33,7 +33,25 @@ const callAPI = async (lat: any, lon: any) => {
 
 const list: NextPage = () => {
 
-    // Handles the submit event on form submit.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const router = useRouter();
+    // @ts-ignore
+    const queries = +router.query.people;
+
+    const rendering = () => {
+        const result = [];
+        for (let i = 0; i < queries; i++) {
+            result.push(
+                <div>
+                <input key={"address" + i} id={"address" + i} name={"address" + i}/>
+                </div>
+            );
+        }
+        console.log(result)
+        return result;
+    };
+
+
     // @ts-ignore
     const handleSubmit = async (event) => {
         // Stop the form from submitting and refreshing the page.
@@ -46,11 +64,11 @@ const list: NextPage = () => {
         //     lon: event.target.lon.value,
         // }
 
+
         dataArr.push(
             {lat: event.target.lat.value, lon: event.target.lon.value},
             {lat: event.target.lat2.value, lon: event.target.lon2.value},
         )
-
 
 
         // Send the data to the server in JSON format.
@@ -82,26 +100,28 @@ const list: NextPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="lat">lat:</label>
-            <input type="text" id="lat" name="lat"/>
-            <label htmlFor="lon">lon:</label>
-            <input type="text" id="lon" name="lon"/>
-            <label htmlFor="lat2">lat:</label>
-            <input type="text" id="lat2" name="lat2"/>
-            <label htmlFor="lon2">lon:</label>
-            <input type="text" id="lon2" name="lon2"/>
+        <form onSubmit={handleSubmit} id={"addressForm"}>
+            {rendering()}
+            {/*<div>{queries}</div>*/}
+            {/*<label htmlFor="address">lat:</label>*/}
+            {/*<input type="text" id="address" name="address"/>*/}
+            {/*<label htmlFor="address2">lon:</label>*/}
+            {/*<input type="text" id="address2" name="address2"/>*/}
+            {/*<label htmlFor="lat2">lat:</label>*/}
+            {/*<input type="text" id="lat2" name="lat2"/>*/}
+            {/*<label htmlFor="lon2">lon:</label>*/}
+            {/*<input type="text" id="lon2" name="lon2"/>*/}
             {/*<input type="button" onClick={callAPI} value="전송"/>*/}
             <button type="submit">Submit</button>
         </form>
 
-);
+    );
 };
 
 // Styles
 const MapBox = styled.div`
-//width: 100vh;
-height: 100vh;
+  //width: 100vh;
+  height: 100vh;
 `;
 
 
