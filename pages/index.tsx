@@ -5,7 +5,6 @@ import styles from '@/styles/Home.module.css'
 import {NextPage} from "next";
 import {useEffect, useState, FunctionComponent} from "react";
 import Link from "next/link";
-import {Count} from "hooks/count";
 import {useRouter} from "next/router";
 
 
