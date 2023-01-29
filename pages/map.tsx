@@ -9,19 +9,24 @@ const IndexPage: NextPage = () => {
     const router = useRouter()
 
     // @ts-ignore
-    const lat1 = +router.query.lat1;
-    // @ts-ignore
     const lon1 = +router.query.lon1;
-
     // @ts-ignore
-    const lat2 = +router.query.lat2;
+    const lat1 = +router.query.lat1;
+
     // @ts-ignore
     const lon2 = +router.query.lon2;
+    // @ts-ignore
+    const lat2 = +router.query.lat2;
 
     // @ts-ignore
-    const mdLat = +router.query.mdLat;
+    const lon3 = +router.query.lon3;
+    // @ts-ignore
+    const lat3 = +router.query.lat3;
+
     // @ts-ignore
     const mdLon = +router.query.mdLon;
+    // @ts-ignore
+    const mdLat = +router.query.mdLat;
 
     const mapRef = useRef<HTMLElement | null | any>(null);
     const [myLocation, setMyLocation] = useState<
@@ -62,9 +67,10 @@ const IndexPage: NextPage = () => {
             let markers = [];
             var areaArr = [];
             areaArr.push(
-                {lat: lat1, lon: lon1},
-                {lat: lat2, lon: lon2},
-                {lat: mdLat, lon: mdLon},
+                {lon: lon1, lat: lat1},
+                {lon: lon2, lat: lat2},
+                {lon: lon3, lat: lat3},
+                {lon: mdLon, lat: mdLat},
             )
 
 
@@ -72,8 +78,8 @@ const IndexPage: NextPage = () => {
 
             var map = new naver.maps.Map('map', {
                 // center: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                center: new naver.maps.LatLng(lat1, lon1),
-                zoom: 18
+                center: new naver.maps.LatLng(mdLat, mdLon),
+                zoom: 16
             });
 
 

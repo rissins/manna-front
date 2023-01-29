@@ -42,8 +42,8 @@ const list: NextPage = () => {
         const result = [];
         for (let i = 0; i < queries; i++) {
             result.push(
-                <div>
-                <input key={"address" + i} id={"address" + i} name={"address" + i}/>
+                <div key={"address" + i}>
+                    <input key={"address" + i} id={"address" + i} name={"address" + i}/>
                 </div>
             );
         }
@@ -64,11 +64,16 @@ const list: NextPage = () => {
         //     lon: event.target.lon.value,
         // }
 
-
-        dataArr.push(
-            {lat: event.target.lat.value, lon: event.target.lon.value},
-            {lat: event.target.lat2.value, lon: event.target.lon2.value},
-        )
+        for (let i = 0; i < queries; i++) {
+            const input = document.getElementById("address" + i) as HTMLInputElement | null;
+            dataArr.push(
+                {address: input?.value}
+            )
+        }
+        // dataArr.push(
+        //     {address:},
+        //     {lon: event.target.lon2.value, lat: event.target.lat2.value},
+        // )
 
 
         // Send the data to the server in JSON format.
@@ -88,41 +93,22 @@ const list: NextPage = () => {
             // Body of the request is the JSON data we created above.
             body: JSONdata,
         }
+        console.log(JSONdata)
 
-        // Send the form data to our forms API on Vercel and get a response.
         const response = await fetch(endpoint, options)
 
         // Get the response data from server as JSON.
         // If server returns the name submitted, that means the form works.
         const result = await response.json()
-        // alert(`Is this your full name: ${result.data}`)
-        console.log(result)
     }
 
     return (
         <form onSubmit={handleSubmit} id={"addressForm"}>
             {rendering()}
-            {/*<div>{queries}</div>*/}
-            {/*<label htmlFor="address">lat:</label>*/}
-            {/*<input type="text" id="address" name="address"/>*/}
-            {/*<label htmlFor="address2">lon:</label>*/}
-            {/*<input type="text" id="address2" name="address2"/>*/}
-            {/*<label htmlFor="lat2">lat:</label>*/}
-            {/*<input type="text" id="lat2" name="lat2"/>*/}
-            {/*<label htmlFor="lon2">lon:</label>*/}
-            {/*<input type="text" id="lon2" name="lon2"/>*/}
-            {/*<input type="button" onClick={callAPI} value="전송"/>*/}
             <button type="submit">Submit</button>
         </form>
 
     );
 };
-
-// Styles
-const MapBox = styled.div`
-  //width: 100vh;
-  height: 100vh;
-`;
-
 
 export default list;
