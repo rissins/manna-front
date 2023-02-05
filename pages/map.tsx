@@ -69,8 +69,8 @@ const IndexPage: NextPage = () => {
             areaArr.push(
                 {lon: lon1, lat: lat1},
                 {lon: lon2, lat: lat2},
-                {lon: lon3, lat: lat3},
-                {lon: mdLon, lat: mdLat},
+                // {lon: lon3, lat: lat3},
+                // {lon: mdLon, lat: mdLat},
             )
 
 
@@ -78,8 +78,8 @@ const IndexPage: NextPage = () => {
 
             var map = new naver.maps.Map('map', {
                 // center: new naver.maps.LatLng(35.09187192552027, 129.04390965500988),
-                center: new naver.maps.LatLng(mdLat, mdLon),
-                zoom: 16
+                center: new naver.maps.LatLng(lat1, lon1),
+                zoom: 15
             });
 
 

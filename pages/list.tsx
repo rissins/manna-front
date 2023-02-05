@@ -1,10 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import type {NextPage} from 'next';
-import styled from 'styled-components'
-import Loader from "react-loader-spinner";
 import {useRouter} from 'next/router'
-import styles from '../styles/Home.module.css';
-import axios from "axios";
 
 const callAPI = async (lat: any, lon: any) => {
 
@@ -35,6 +31,8 @@ const list: NextPage = () => {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const router = useRouter();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [route, setRoute] = useState()
     // @ts-ignore
     const queries = +router.query.people;
 
@@ -67,7 +65,7 @@ const list: NextPage = () => {
         for (let i = 0; i < queries; i++) {
             const input = document.getElementById("address" + i) as HTMLInputElement | null;
             dataArr.push(
-                {address: input?.value}
+                {"address": input?.value}
             )
         }
         // dataArr.push(
@@ -94,15 +92,27 @@ const list: NextPage = () => {
             // Body of the request is the JSON data we created above.
             body: JSONdata,
         }
-        console.log(dataArr)
 
-        const response = await fetch(endpoint, options);
+        const response = await fetch(endpoint, options)
+            .then((res) => {
+                console.log(`first get request sent:`+ res);
+                return res;
+            });
 
+        const posts = await response.json();
+
+        console.log(posts[0].lat);
+        console.log(posts[0].lon);
+        await router.push({
+            pathname: '/map',
+            query: {
+                lat1: posts[0].lat, lon1: posts[0].lon,
+                lat2: posts[1].lat, lon2: posts[1].lon
+            },
+        })
         // Get the response data from server as JSON.
         // If server returns the name submitted, that means the form works.
-        const result = await response.json()
-
-        return result;
+        return posts;
     }
 
     return (
