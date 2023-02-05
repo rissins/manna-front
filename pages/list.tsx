@@ -89,17 +89,20 @@ const list: NextPage = () => {
             // Tell the server we're sending JSON.
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': '*/*',
             },
             // Body of the request is the JSON data we created above.
             body: JSONdata,
         }
-        console.log(JSONdata)
+        console.log(dataArr)
 
-        const response = await fetch(endpoint, options)
+        const response = await fetch(endpoint, options);
 
         // Get the response data from server as JSON.
         // If server returns the name submitted, that means the form works.
         const result = await response.json()
+
+        return result;
     }
 
     return (
