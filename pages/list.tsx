@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import type {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import DaumPostcodeEmbed from 'react-daum-postcode';
-import DaumPost from "components/Kakao/DaumPost";
+import DaumPost from 'components/Kakao/DaumPost';
 
 const callAPI = async (lat: any, lon: any) => {
 
