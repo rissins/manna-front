@@ -98,19 +98,16 @@ const list: NextPage = () => {
 
         const response = await fetch(endpoint, options)
             .then((res) => {
-                console.log(`first get request sent:`+ res);
                 return res;
             });
 
         const posts = await response.json();
-
-        console.log(posts[0].lat);
-        console.log(posts[0].lon);
         await router.push({
             pathname: '/map',
             query: {
-                lat1: posts[0].lat, lon1: posts[0].lon,
-                lat2: posts[1].lat, lon2: posts[1].lon
+                lat1: posts[0].lat[0], lon1: posts[0].lon[0],
+                lat2: posts[0].lat[1], lon2: posts[0].lon[1],
+                mdLat: posts[0].mdLat, mdLon: posts[0].mdLon
             },
         })
         // Get the response data from server as JSON.
