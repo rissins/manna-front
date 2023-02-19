@@ -60,8 +60,8 @@ const Postcode = ({ inputAddress }: AddressProps) => {
         //     Open
         // </button>
         <div>
-            <input name={inputAddress} onChange={handleInput} value={address}/>
-            <button onClick={handleClick}>우편번호 찾기</button>
+            <input id={inputAddress} name={inputAddress} onChange={handleInput} value={address}/>
+            <button type={"button"} onClick={handleClick}>우편번호 찾기</button>
         </div>
     );
 };

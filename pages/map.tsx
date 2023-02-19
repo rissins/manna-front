@@ -69,8 +69,8 @@ const IndexPage: NextPage = () => {
             areaArr.push(
                 {lon: lon1, lat: lat1},
                 {lon: lon2, lat: lat2},
-                // {lon: lon3, lat: lat3},
-                // {lon: mdLon, lat: mdLat},
+                {lon: lon3, lat: lat3},
+                {lon: mdLon, lat: mdLat},
             )
 
 

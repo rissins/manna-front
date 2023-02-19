@@ -119,11 +119,12 @@ const list: NextPage = () => {
     }
 
     return (
+        <div>
         <form onSubmit={handleSubmit} id={"addressForm"}>
             {rendering()}
             <button type="submit">Submit</button>
         </form>
-
+        </div>
     );
 };
 
