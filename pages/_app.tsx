@@ -7,6 +7,7 @@ import { Provider as RWBProvider } from "react-wrap-balancer";
 import cx from "classnames";
 import localFont from "@next/font/local";
 import { Inter } from "@next/font/google";
+import "@/styles/style.css";
 
 const sfPro = localFont({
   src: "../styles/SF-Pro-Display-Medium.otf",
