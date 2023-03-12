@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import type {NextPage} from 'next';
 import {useRouter} from 'next/router';
-import DaumPostcodeEmbed from 'react-daum-postcode';
 import DaumPost from "@/components/Kakao/DaumPost";
 import Card from "@/components/home/card";
 import Layout from "@/components/layout";
-import Balancer from "react-wrap-balancer";
 import {motion} from "framer-motion";
 import ComponentGrid from "@/components/home/component-grid";
-import Count from "@/components/etc/count";
 import Post from "@/components/etc/post";
 
 const callAPI = async (lat: any, lon: any) => {
