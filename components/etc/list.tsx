@@ -3,13 +3,6 @@ import type {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import DaumPostcodeEmbed from 'react-daum-postcode';
 import DaumPost from "@/components/Kakao/DaumPost";
-import Card from "@/components/home/card";
-import Layout from "@/components/layout";
-import Balancer from "react-wrap-balancer";
-import {motion} from "framer-motion";
-import ComponentGrid from "@/components/home/component-grid";
-import Count from "@/components/etc/count";
-import List from "@/components//etc/list";
 
 const callAPI = async (lat: any, lon: any) => {
 
@@ -51,9 +44,9 @@ const list: NextPage = () => {
             result.push(
                 <div key={"address" + i}>
                     {/*<input key={"address" + i} id={"address" + i} name={"address" + i}/>*/}
-                    <DaumPost inputAddress={"address" + i}/>
-                </div>
-            );
+                    <DaumPost  inputAddress={"address"+i}/>
+            </div>
+        );
         }
         console.log(result)
         return result;
@@ -123,66 +116,13 @@ const list: NextPage = () => {
     }
 
     return (
-        <Layout>
-            <motion.div
-                className="max-w-xl px-5 xl:px-0"
-                initial="hidden"
-                whileInView="show"
-                animate="show"
-                viewport={{once: true}}
-                variants={{
-                    hidden: {},
-                    show: {
-                        transition: {
-                            staggerChildren: 0.15,
-                        },
-                    },
-                }}
-            >
-            </motion.div>
-
-            <div
-                className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-2 xl:px-0">
-                {features.map(({title, description, demo, large}) => (
-
-                    <Card
-                        key={title}
-                        title={title}
-                        description={description}
-                        demo={
-                            title === "Beautiful, reusable components" ? (
-                                <ComponentGrid/>
-                            ) : (
-                                demo
-                            )
-                        }
-                        large={large}
-                    />
-                ))}
-            </div>
-
-            {/*<div>*/}
-            {/*    <form onSubmit={handleSubmit} id={"addressForm"}>*/}
-            {/*        {rendering()}*/}
-            {/*        <button type="submit">Submit</button>*/}
-            {/*    </form>*/}
-            {/*</div>*/}
-        </Layout>
-    );
+        <div>
+            <form onSubmit={handleSubmit} id={"addressForm"}>
+        {rendering()}
+        <button type="submit">Submit</button>
+        </form>
+        </div>
+);
 };
-
-const features = [
-    {
-        title: "Performance first",
-        description:
-            "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
-        large: true,
-        demo: (
-            <List />
-        ),
-    },
-];
-
-
 
 export default list;
