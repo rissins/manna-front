@@ -9,7 +9,7 @@ import Balancer from "react-wrap-balancer";
 import {motion} from "framer-motion";
 import ComponentGrid from "@/components/home/component-grid";
 import Count from "@/components/etc/count";
-import List from "@/components//etc/list";
+import Post from "@/components/etc/post";
 
 const callAPI = async (lat: any, lon: any) => {
 
@@ -178,7 +178,7 @@ const features = [
             "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
         large: true,
         demo: (
-            <List />
+            <Post />
         ),
     },
 ];

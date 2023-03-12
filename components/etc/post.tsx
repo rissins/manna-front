@@ -29,7 +29,7 @@ const callAPI = async (lat: any, lon: any) => {
     }
 };
 
-const list: NextPage = () => {
+const post: NextPage = () => {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const router = useRouter();
@@ -125,4 +125,4 @@ const list: NextPage = () => {
 );
 };
 
-export default list;
+export default post;

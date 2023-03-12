@@ -28,7 +28,7 @@ const IndexPage: FunctionComponent = () => {
         // router.push("https://naver.com");
 
         router.replace({
-            pathname: "/list",
+            pathname: "/post",
             query: {
                 people: count,
             },
